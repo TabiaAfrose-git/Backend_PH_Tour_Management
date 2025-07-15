@@ -1,7 +1,8 @@
-import  express, { NextFunction, Request, Response }  from 'express';
+import  express, { Request, Response }  from 'express';
 import cors from "cors";
 import { router } from './app/routes';
-import { globalErrorHandler } from './app/middlewares/globalErrorHadler';
+import { globalErrorHandler } from './app/middlewares/globalErrorHandler';
+import notFound from './app/middlewares/notFound';
 
 const app = express();
 
@@ -16,6 +17,7 @@ res.status(200).json({
 })
 
 app.use(globalErrorHandler)
+app.use(notFound)
 
 
 export default app;
